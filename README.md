@@ -232,3 +232,14 @@ python api_flask_server.py
 # 4. 前端（新开终端）
 streamlit run streamlit_app.py
 ```
+
+
+
+## 预训练模型！！
+
+本项目依赖 `bert-base-chinese` 预训练模型，请自行下载并放到 `01-data/bert-base-chinese/` 目录下。
+
+- HuggingFace: https://huggingface.co/bert-base-chinese
+- ModelScope: https://www.modelscope.cn/models/tiansz/bert-base-chinese
+
+下载后确保目录结构为：
