@@ -8,34 +8,39 @@
 
 ## 项目结构
 
-data/
-├── 01-data/ # 数据与预训练模型
-│ ├── bert-base-chinese/ # 中文 BERT 预训练模型（需自行下载）
-│ │ ├── config.json
-│ │ ├── model.safetensors
-│ │ ├── tokenizer.json
-│ │ ├── tokenizer_config.json
-│ │ └── vocab.txt
-│ ├── save_model/ # 训练产物（自动生成）
-│ │ ├── bert_model.pth # 微调后的 BERT 分类模型
-│ │ └── bert_quantization.pth # 动态量化后的模型（int8）
-│ ├── class.txt # 8 个工单类别
-│ ├── train.txt # 训练集
-│ ├── dev.txt # 验证集
-│ └── test.txt # 测试集
+data/                                   ← 项目根目录
 │
-└── 02-code/ # 全部代码
-├── .env # DeepSeek API Key（不提交 Git）
-├── .gitignore
-├── requirements.txt
-├── config.py # 全局配置
-├── 数据探索.py # 数据分布统计
-├── bert_train.py # 模型微调
-├── bert_quantization.py # 动态量化
-├── bert_predict_fun.py # 推理函数
-├── api_flask_server.py # Flask 后端
-└── streamlit_app.py # Streamlit 前端
-
+├── 01-data/                            ← 数据与预训练模型
+│   ├── bert-base-chinese/              ← 预训练中文 BERT（底座）
+│   │   ├── config.json
+│   │   ├── configuration.json
+│   │   ├── model.safetensors
+│   │   ├── tokenizer.json
+│   │   ├── tokenizer_config.json
+│   │   ├── vocab.txt
+│   │   └── .gitattributes
+│   ├── save_model/                     ← 训练产物
+│   │   ├── bert_model.pth              ← 微调后的 BERT（教师/主模型）
+│   │   └── bert_quantization.pth       ← 动态量化后的模型
+│   ├── class.txt                       ← 8 个类别名称，一行一个
+│   ├── train.txt                       ← 训练集
+│   ├── dev.txt                         ← 验证集
+│   ├── test.txt                        ← 测试集
+│   ├── train_raw.txt                   ← （可选）去重前原始数据
+│   ├── dev_raw.txt
+│   └── test_raw.txt
+│
+└── 02-code/                            ← 所有代码
+    ├── .env                            ← 存 DEEPSEEK_API_KEY（不要提交 Git）
+    ├── .gitignore                      ← 排除 .env、__pycache__ 等
+    ├── requirements.txt                ← 依赖清单
+    ├── config.py                       ← 全局配置：路径、超参、device、API 端口
+    ├── 数据探索.py                      ← 查看数据分布
+    ├── bert_train.py                   ← 微调 BERT（产出 bert_model.pth）
+    ├── bert_quantization.py            ← 动态量化（产出 bert_quantization.pth）
+    ├── bert_predict_fun.py             ← 加载量化模型做本地预测
+    ├── api_flask_server.py             ← Flask 后端（3 个路由）
+    └── streamlit_app.py                ← Streamlit 前端界面
 ---
 
 ## 快速开始
