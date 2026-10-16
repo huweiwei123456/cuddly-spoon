@@ -7,7 +7,7 @@
 ---
 
 ## 项目结构
-'''
+```
 data/
 ├── 01-data/ # 数据与预训练模型
 │ ├── bert-base-chinese/ # 预训练 BERT
@@ -22,7 +22,7 @@ data/
 ├── bert_predict_fun.py # 推理
 ├── api_flask_server.py # 后端
 └── streamlit_app.py # 前端
-'''
+```
 ## 快速开始
 
 ### 1. 环境准备
